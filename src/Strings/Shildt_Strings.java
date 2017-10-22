@@ -93,12 +93,28 @@ public class Shildt_Strings {
 /////////////////////StringBuffer - класс позволяющий, вносить изменения в строковое содержимое///////////////////////
         StringBuffer strBuf = new StringBuffer("PrivetMedved");
         System.out.println("Длина экземпляра класса StringBuffer: " + strBuf.length());
-        System.out.println("Емкость экземпляра класса StringBuffer: " + strBuf.capacity());
+        System.out.println("Текущий объем выделенной памяти в экземпляре класса StringBuffer: " + strBuf.capacity());
         System.out.println("Буфер экземпляра класса StringBuffer: " + strBuf);
         strBuf.ensureCapacity(30);
         System.out.println("Новая измененная ёмкость экземпляра класса StringBuffer: " + strBuf.capacity());
         strBuf.setLength(15);
         System.out.println("Новая измененная длина экземпляра класса StringBuffer: " + strBuf.length());
+        System.out.println("Первый символ в объекте StringBuffer: " + strBuf.charAt(0));
+        strBuf.setCharAt(0, 'L');
+        System.out.println("Буфер нового экземпляра класса StringBuffer: " + strBuf);
+        char[] inputFrom = {'1', '1', '1', '1', '1', '1'};
+        strBuf.getChars(0, 6, inputFrom, 0);
+        System.out.println("Массив символов импортирующий заданную подстроку из объекта StringBuffer: " + inputFrom);
+        int a3 = 42;
+        StringBuffer sb = new StringBuffer(40);
+        System.out.println("Результат применения метода append к объекту StringBuffer: " + sb.append("a = ").append(a3).append("!").toString());
+        StringBuffer sb2 = new StringBuffer("SLOL");
+        sb2.insert(1, "OOO");
+        System.out.println("Результат применения метода insert к объекту типа StringBuffer: " + sb2);
+        sb2.reverse();
+        System.out.println("Метод reverse к объекту StringBuffer: " + sb2);
+        sb2.delete(3, sb2.length());
+        System.out.println("Удаление третьего от символа до последнего, в объекте StringBufer: " + sb2);
     }
 }
 
