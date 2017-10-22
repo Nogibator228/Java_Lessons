@@ -14,15 +14,15 @@ public class Shildt_Strings {
 ////////////////////////////////Строковые литералы//////////////////////////////////////
         System.out.println("Literal".toUpperCase());
 ////////////////////////////////Сцепление строк//////////////////////////////////////
-        String age = "9";
-        String s = "Ему" + age + "лет";
+        String age = "7";
+        String s = "Ему" + age + "лет, и он одинок";
         System.out.println(s);
 ////////////////////////Сцепление строк с другими типами данных///////////////////////
         System.out.println("Четыре: " + (2 + 2));
 /////////////////////Преобразование символьных строк и метод .toString()///////////////////
         // Метод valueOf() - отвечает за преобразование примитивных типов данных в их стрококвое представление
         // Метод toString() - отвеает за представление объектов в их строковй эквивалент.
-        Box newBox = new Box(10, 12, 14);
+        TestBox newBox = new TestBox(10, 12, 14);
         String strBox = "Объект newBox типа Box: " + newBox;
         System.out.println(newBox);
         System.out.println(strBox);
@@ -53,7 +53,7 @@ public class Shildt_Strings {
         // == сравнивает две ссылки на объекты и определяет, ссылаются ли они на один и тот же экземпляр.
         String s1 = "Dno";
         String s2 = new String(s1);
-        if (s1.equals(s2)) System.out.println("Dno равно Dno");
+        if (s1.equals(s2)) System.out.println("Dno equals Dno");
         if (!(s1 == s2)) System.out.println("s1 с Dno != s2 с Dno");
 /////////////////////compareTo() и интерфейс Comparable<T>///////////////////////
         // функция int compareTo(String строка) из интерфейса Comparable<T>
@@ -115,13 +115,19 @@ public class Shildt_Strings {
         System.out.println("Метод reverse к объекту StringBuffer: " + sb2);
         sb2.delete(3, sb2.length());
         System.out.println("Удаление третьего от символа до последнего, в объекте StringBufer: " + sb2);
+        sb2.replace(0, sb2.length(), "HAHA");
+        System.out.println("Замена содержимого в объекте StringBuffer: " + sb2);
+        System.out.println("Выделение подстроки с позиций 1 и 3, из объекта StringBuffer: " + sb2.substring(1,3));
+        StringBuffer sb3 = new StringBuffer("azaza loooool megusta azaza");
+        System.out.println("Индекс первого вхождения строки azaza в объекте StringBuffer: " + sb3.indexOf("azaza"));
+        System.out.println("Индекс последнего вхождения строки azaza в объекте StringBuffer: " + sb3.lastIndexOf("azaza"));
     }
 }
 
-class Box {
+class TestBox {
     private double width, height, depth;
 
-    Box(double w, double h, double d) {
+    TestBox(double w, double h, double d) {
         width = w;
         height = h;
         depth = d;
