@@ -121,6 +121,7 @@ public class Shildt_Strings {
         StringBuffer sb3 = new StringBuffer("azaza loooool megusta azaza");
         System.out.println("Индекс первого вхождения строки azaza в объекте StringBuffer: " + sb3.indexOf("azaza"));
         System.out.println("Индекс последнего вхождения строки azaza в объекте StringBuffer: " + sb3.lastIndexOf("azaza"));
+        // Класс StringBuilder - ничем не отличается от класса StringBuffer, кроме того, что он не синхронизирован.
     }
 }
 
