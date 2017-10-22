@@ -94,7 +94,11 @@ public class Shildt_Strings {
         StringBuffer strBuf = new StringBuffer("PrivetMedved");
         System.out.println("Длина экземпляра класса StringBuffer: " + strBuf.length());
         System.out.println("Емкость экземпляра класса StringBuffer: " + strBuf.capacity());
-        System.out.println("Емкость экземпляра класса StringBuffer: " + strBuf);
+        System.out.println("Буфер экземпляра класса StringBuffer: " + strBuf);
+        strBuf.ensureCapacity(30);
+        System.out.println("Новая измененная ёмкость экземпляра класса StringBuffer: " + strBuf.capacity());
+        strBuf.setLength(15);
+        System.out.println("Новая измененная длина экземпляра класса StringBuffer: " + strBuf.length());
     }
 }
 
