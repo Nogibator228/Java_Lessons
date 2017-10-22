@@ -90,8 +90,11 @@ public class Shildt_Strings {
         System.out.println("Строка RKDKD с .toLowerCase(): " + "RKDKD".toLowerCase());
 /////////////////////Соединение символьных строк///////////////////////
         System.out.println("Соединение символьных строк \"123\" \"321\" \"456\" с разделителем запятая \",\" = " + String.join(",", "123", "321", "456"));
-
-        // Тест коммита на гитхаб
+/////////////////////StringBuffer - класс позволяющий, вносить изменения в строковое содержимое///////////////////////
+        StringBuffer strBuf = new StringBuffer("PrivetMedved");
+        System.out.println("Длина экземпляра класса StringBuffer: " + strBuf.length());
+        System.out.println("Емкость экземпляра класса StringBuffer: " + strBuf.capacity());
+        System.out.println("Емкость экземпляра класса StringBuffer: " + strBuf);
     }
 }
 
