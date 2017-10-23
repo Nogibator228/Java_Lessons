@@ -28,52 +28,48 @@ public class Synchronized {
     public static void main(String[] args) throws InterruptedException {
         Account account = new Account(100_000);
         System.out.println("Начальный баланс: " + account.getBalance());
-        DepositThread depositThread = new DepositThread(account);
-        WithDrawThread withdrawThread = new WithDrawThread(account);
+        Thread depositThread = new DepositThread(account);
+        Thread withdrawThread = new WithDrawThread(account);
 
-        depositThread.t.join();
-        withdrawThread.t.join();
+        depositThread.start();
+        withdrawThread.start();
+
+        depositThread.join();
+        withdrawThread.join();
 
         System.out.println("End balance: " + account.getBalance());
     }
 }
 
-class WithDrawThread implements Runnable {
+class WithDrawThread extends Thread{
     private final Account account;
-    Thread t;
 
     WithDrawThread(Account account) {
         this.account = account;
-        t = new Thread(this);
-        t.start();
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 50000; i++) {
             account.withdraw(1);
         }
     }
 }
 
-class DepositThread implements Runnable {
+class DepositThread extends Thread {
     private final Account account;
-    Thread t;
 
     DepositThread(Account account) {
         this.account = account;
-        t = new Thread(this);
-        t.start();
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < 200000; i++) {
+        for (int i = 0; i < 50000; i++) {
             account.deposit(1);
         }
     }
 }
-
 
 class Account {
     private long balance;
@@ -90,12 +86,12 @@ class Account {
         return balance;
     }
 
-    void deposit(long amount) {
+    synchronized void deposit(long amount) {
         checkAmountNonNegative(amount);
         balance += amount;
     }
 
-    void withdraw(long amount) {
+     synchronized void withdraw(long amount) {
         checkAmountNonNegative(amount);
         if (balance < amount) {
             throw new IllegalArgumentException("Денег нет, но вы держитесь");
